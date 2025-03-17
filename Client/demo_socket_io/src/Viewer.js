@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:3333");
+const socket = io("https://socket-io.vizion.space/");
 
 const Viewer = ({ sessionId }) => {
   const [messages, setMessages] = useState([]);
@@ -13,6 +13,7 @@ const Viewer = ({ sessionId }) => {
 
     socket.on("receiveChangeSceneCmd", (sceneId) => {
       console.log("🚀 ~ socket.on ~ message:", sceneId);
+
       setMessages((prev) => [...prev, sceneId]);
     });
 
